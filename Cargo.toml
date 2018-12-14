@@ -1,0 +1,9 @@
+[package]
+name = "shrek"
+version = "0.1.0"
+authors = ["John-John Tedro <udoprog@tedro.se>"]
+edition = "2018"
+
+[dependencies]
+futures-preview = "0.3.0-alpha.10"
+hashbrown = "*"
