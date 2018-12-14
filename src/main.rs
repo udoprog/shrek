@@ -20,12 +20,16 @@ impl<'a> System<'a> for Example {
     fn run(mut self, (frame, mut number): Self::Data) -> pin::Pin<Box<dyn Future<Output = ()> + 'a>> {
         Box::pinned(
             async move {
+                // TODO: how do we prevent this?
+                let num = &mut *number;
+
                 loop {
                     await!(frame.sync());
+
                     println!("tick: {}", self.counter);
-                    println!("thing: {}", *number);
+                    println!("thing: {}", *num);
                     self.counter += 1;
-                    *number += 1;
+                    *num += 1;
                 }
             },
         )

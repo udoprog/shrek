@@ -156,6 +156,8 @@ impl<'dispatcher, T> ops::Deref for Write<'_, T> where T: 'static {
 
 impl<'dispatcher, T> ops::DerefMut for Write<'_, T> where T: 'static {
     fn deref_mut(&mut self) -> &mut T {
+        println!("THIS SHOULD PRINT MORE THAN ONCE");
+
         unsafe {
             self.resources.as_mut().get_mut(&self.type_id).expect("no such resource")
         }
